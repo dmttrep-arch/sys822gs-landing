@@ -15,6 +15,10 @@
   <meta property="og:locale" content="ru_RU" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#141210" />
+  <link rel="preload" as="image" href="/hero.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,7 +33,7 @@
       "priceCurrency": "USD",
       "price": "1000000",
       "availability": "https://schema.org/PreOrder",
-      "url": "https://sys822.ru/#lead-form"
+      "url": "https://sys822.ru/#request"
     }
   }
   </script>
@@ -558,7 +562,7 @@
 
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
-      <img src="hero.png" alt="" width="1920" height="1080" />
+      <img src="hero.png" alt="Supermicro SYS-822GS 8U сервер с NVIDIA HGX B300" width="1920" height="1080" fetchpriority="high" />
     </div>
     <div class="wrap">
       <div class="hero-content">
@@ -779,7 +783,8 @@
           <p>Оставьте контакты — пришлём условия поставки в Россию, сроки и варианты ввода в эксплуатацию.</p>
           <p class="price-hint">Стоимость — <strong>от $1&nbsp;000&nbsp;000</strong> · доставка в РФ · условия уточняйте</p>
         </div>
-        <form class="reveal" id="lead-form" action="#" method="post">
+        <form class="reveal" id="lead-form" action="#" method="post" novalidate>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0" />
           <label>Имя<input type="text" name="name" autocomplete="name" required /></label>
           <label>Компания<input type="text" name="company" autocomplete="organization" required /></label>
           <label>Email / телефон<input type="text" name="contact" autocomplete="email" required placeholder="email или телефон" /></label>
@@ -845,6 +850,12 @@
         message: String(data.get("message") || "").trim(),
         attribution: getAttribution(),
       };
+      if (String(data.get("website") || "").trim()) {
+        note.textContent = "Заявка принята.";
+        form.reset();
+        btn.disabled = false;
+        return;
+      }
 
       btn.disabled = true;
       note.textContent = "Отправляем…";

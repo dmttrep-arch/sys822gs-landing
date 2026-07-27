@@ -1,14 +1,11 @@
 {
-  "name": "sys822gs-landing",
-  "private": true,
-  "scripts": {
-    "deploy": "wrangler pages deploy public --project-name=sys822gs-landing --commit-dirty=true",
-    "dev": "wrangler pages dev public --port 8788"
-  },
   "devDependencies": {
     "wrangler": "^4.28.0"
   },
-  "dependencies": {
-    "netlify-cli": "file:../../../Users/User/AppData/Local/Temp/netlify-cli.tgz"
-  }
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev public --port 8788",
+    "deploy": "wrangler pages deploy public --project-name=sys822gs-landing --commit-dirty=true"
+  },
+  "name": "sys822gs-landing"
 }

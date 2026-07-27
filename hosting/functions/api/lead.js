@@ -16,6 +16,10 @@ export async function onRequestPost(context) {
     const contact = String(data.contact || "").trim();
     const message = String(data.message || "").trim() || "—";
     const attr = data.attribution && typeof data.attribution === "object" ? data.attribution : {};
+    const honeypot = String(data.website || "").trim();
+    if (honeypot) {
+      return json({ ok: true }, 200, headers);
+    }
 
     if (!name || !company || !contact) {
       return json({ ok: false, error: "required_fields" }, 400, headers);

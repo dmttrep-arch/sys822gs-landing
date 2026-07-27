@@ -1,22 +1,16 @@
-# SYS-822GS Landing
+# Deploy production (Cloudflare Pages)
 
-## Live
-
-**https://dmttrep-arch.github.io/sys822gs-landing/**
-
-Форма заявки отправляет лид в Telegram.
-
-Обновить сайт после правок HTML:
-```bat
-powershell -ExecutionPolicy Bypass -File publish_pages.ps1
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\deploy.ps1
 ```
 
-Репозиторий: https://github.com/dmttrep-arch/sys822gs-landing
+Syncs `index.html`, `hero.png`, `favicon.svg` → `hosting/public`, deploys Functions + static.
 
-## Render (опционально, если нужен серверный API)
+Live (canonical): **https://sys822.ru/** (after DNS in `marketing/DNS_FIX.md`)  
+Mirror: **https://sys822gs-landing.pages.dev/**
 
-https://render.com/deploy?repo=https://github.com/dmttrep-arch/sys822gs-landing
+Smoke test after deploy:
 
-## Локально
-
-`start.bat` → http://127.0.0.1:8765/
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\smoke.ps1
+```

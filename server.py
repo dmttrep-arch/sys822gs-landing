@@ -143,6 +143,9 @@ def format_attribution(data: dict) -> list[str]:
         company = str(data.get("company") or "").strip()
         contact = str(data.get("contact") or "").strip()
         message = str(data.get("message") or "").strip() or "—"
+        if str(data.get("website") or "").strip():
+            self._json(200, {"ok": True})
+            return
 
         if not name or not company or not contact:
             self._json(400, {"ok": False, "error": "required_fields"})
