@@ -84,7 +84,26 @@ def send_telegram(text: str) -> dict:
     )
 
 
-class Handler(SimpleHTTPRequestHandler):
+def format_attribution(data: dict) -> list[str]:
+    attr = data.get("attribution")
+    if not isinstance(attr, dict):
+        return []
+    lines: list[str] = []
+    for key in ("utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"):
+        val = str(attr.get(key) or "").strip()
+        if val:
+            lines.append(f"{key}: {val}")
+    ref = str(attr.get("referrer") or "").strip()
+    if ref:
+        lines.append(f"referrer: {ref[:400]}")
+    page = str(attr.get("page_url") or "").strip()
+    if page:
+        lines.append(f"page: {page[:400]}")
+    if not lines:
+        return []
+    return ["", "Атрибуция:"] + lines
+
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
 
@@ -143,6 +162,7 @@ class Handler(SimpleHTTPRequestHandler):
                 f"Комментарий: {message}",
                 "",
                 "Цена: от $1 000 000 · условия уточняйте",
+                *format_attribution(data),
             ]
         )
 

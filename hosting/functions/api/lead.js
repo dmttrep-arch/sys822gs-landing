@@ -15,6 +15,7 @@ export async function onRequestPost(context) {
     const company = String(data.company || "").trim();
     const contact = String(data.contact || "").trim();
     const message = String(data.message || "").trim() || "—";
+    const attr = data.attribution && typeof data.attribution === "object" ? data.attribution : {};
 
     if (!name || !company || !contact) {
       return json({ ok: false, error: "required_fields" }, 400, headers);
@@ -29,6 +30,16 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: "telegram_not_configured" }, 500, headers);
     }
 
+    const attrLines = [];
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]) {
+      const val = String(attr[key] || "").trim();
+      if (val) attrLines.push(`${key}: ${val.slice(0, 120)}`);
+    }
+    const ref = String(attr.referrer || "").trim();
+    if (ref) attrLines.push(`referrer: ${ref.slice(0, 400)}`);
+    const page = String(attr.page_url || "").trim();
+    if (page) attrLines.push(`page: ${page.slice(0, 400)}`);
+
     const text = [
       "Новая заявка · SYS-822GS-NB3RT-01-G2",
       "",
@@ -38,6 +49,7 @@ export async function onRequestPost(context) {
       `Комментарий: ${message}`,
       "",
       "Цена: от $1 000 000 · доставка в РФ · условия уточняйте",
+      ...(attrLines.length ? ["", "Атрибуция:", ...attrLines] : []),
     ].join("\n");
 
     const tg = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {

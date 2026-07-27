@@ -3,8 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SYS-822GS-NB3RT-01-G2 — Supermicro Gold Series HGX B300</title>
-  <meta name="description" content="8U GPU SuperServer: 8× NVIDIA HGX B300, Dual Xeon 6768P, 2 ТБ DDR5, 800GbE. Ready to Ship. Запрос коммерческого предложения." />
+  <title>SYS-822GS-NB3RT-01-G2 — Supermicro Gold Series HGX B300 | sys822.ru</title>
+  <meta name="description" content="8U GPU SuperServer Supermicro SYS-822GS: 8× NVIDIA HGX B300, Dual Xeon 6768P, ~2.3 TB HBM3e, 800GbE. Поставка в РФ. От $1 000 000 — запрос КП." />
+  <meta name="keywords" content="Supermicro SYS-822GS, HGX B300, GPU сервер, LLM training, private AI, Xeon 6768P, sys822" />
+  <link rel="canonical" href="https://sys822.ru/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sys822.ru/" />
+  <meta property="og:title" content="SYS-822GS-NB3RT-01-G2 — HGX B300 8-GPU" />
+  <meta property="og:description" content="Enterprise AI-сервер Supermicro Gold Series. 8× B300, dual Xeon 6768P. Поставка в Россию. Запрос коммерческого предложения." />
+  <meta property="og:image" content="https://sys822.ru/hero.png" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Supermicro SYS-822GS-NB3RT-01-G2",
+    "description": "8U GPU SuperServer: NVIDIA HGX B300 8-GPU, Dual Intel Xeon 6768P, Ready to Ship Gold Series",
+    "brand": { "@type": "Brand", "name": "Supermicro" },
+    "image": "https://sys822.ru/hero.png",
+    "url": "https://sys822.ru/",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "1000000",
+      "availability": "https://schema.org/PreOrder",
+      "url": "https://sys822.ru/#lead-form"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Fragment+Mono:wght@400&display=swap" rel="stylesheet" />
@@ -770,6 +798,26 @@
   <script>
     const API = `${location.origin}/api/lead`;
 
+    const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+    (function persistUtm() {
+      const p = new URLSearchParams(location.search);
+      UTM_KEYS.forEach((k) => {
+        const v = p.get(k);
+        if (v) sessionStorage.setItem(k, v.slice(0, 120));
+      });
+    })();
+
+    function getAttribution() {
+      const out = {};
+      UTM_KEYS.forEach((k) => {
+        const v = sessionStorage.getItem(k) || new URLSearchParams(location.search).get(k);
+        if (v) out[k] = String(v).slice(0, 120);
+      });
+      out.referrer = (document.referrer || "").slice(0, 500);
+      out.page_url = location.href.slice(0, 500);
+      return out;
+    }
+
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
@@ -795,6 +843,7 @@
         company: String(data.get("company") || "").trim(),
         contact: String(data.get("contact") || "").trim(),
         message: String(data.get("message") || "").trim(),
+        attribution: getAttribution(),
       };
 
       btn.disabled = true;
