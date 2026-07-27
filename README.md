@@ -1,30 +1,18 @@
-# Запуск SYS-822GS
+# SYS-822GS Landing
 
-## Публичный доступ (интернет)
+## Deploy on Render (permanent hosting)
 
-1. Сначала `start.bat` (лендинг + бот)
-2. Затем `start_public.bat` — Cloudflare Tunnel
-3. Ссылка сохранится в `PUBLIC_URL.txt`
+1. Open: https://render.com/deploy?repo=https://github.com/dmttrep-arch/sys822gs-landing
+2. Create/login Render account (GitHub)
+3. Set environment variables:
+   - TELEGRAM_BOT_TOKEN = (token from BotFather)
+   - TELEGRAM_CHAT_ID = 669802068
+4. Deploy
 
-Текущий URL (меняется при каждом новом quick tunnel):
-см. `PUBLIC_URL.txt`
+Site URL example: `https://sys822gs-landing.onrender.com`
 
-Форма и API работают через тот же URL.
+Form `POST /api/lead` sends leads to Telegram.
 
-## Локально
+## Cloudflare Pages alternative
 
-| | |
-|---|---|
-| ПК | http://127.0.0.1:8765/ |
-| Телефон Wi‑Fi | http://192.168.68.117:8765/ |
-| Sales-бот | https://t.me/innvaAI_bot |
-
-Остановка локальных сервисов: `stop.bat`  
-Остановка туннеля: закрыть процесс `cloudflared` или `Stop-Process -Name cloudflared`
-
-## Нужно
-
-1. Python в PATH  
-2. Ollama (для менеджера в боте)  
-3. cloudflared (уже установлен)  
-4. `.env` с токеном бота
+See `hosting/README.md`
