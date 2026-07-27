@@ -1,0 +1,11 @@
+{
+  "name": "sys822gs-landing",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler pages deploy public --project-name=sys822gs-landing --commit-dirty=true",
+    "dev": "wrangler pages dev public --port 8788"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.0"
+  }
+}

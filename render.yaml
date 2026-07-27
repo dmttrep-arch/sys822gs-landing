@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sys822gs-landing
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
