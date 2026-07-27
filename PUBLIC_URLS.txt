@@ -1,5 +1,0 @@
-PRIMARY=https://sys822gs-landing.pages.dev
-CLOUDFLARE_PAGES=https://sys822gs-landing.pages.dev
-LOCAL=http://127.0.0.1:8765/
-CHECKED=2026-07-27T11:40:33.2243006+03:00
-LEAD=ok
