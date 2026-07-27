@@ -1,0 +1,10 @@
+sales/sessions/
+__pycache__/
+.venv/
+.env
+*.pyc
+setup_out.txt
+setup_err.txt
+tunnel.log
+tunnel.err.log
+PUBLIC_URL.txt
