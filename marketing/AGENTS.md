@@ -13,16 +13,19 @@
 | **MKT-ANALYTICS** | UTM, лиды, SQL | метрики | отчёт weekly, воронка |
 | **MKT-LEGAL** | формулировки РФ | право/комплаенс | проверка «без гарантий/дилерства» |
 
-## GitHub OSS (база автomation)
+## Что берём сейчас (выбрано)
 
-| Repo | Задача |
-|------|--------|
-| [umami-software/umami](https://github.com/umami-software/umami) | self-host аналитика, события |
-| [dubinc/dub](https://github.com/dubinc/dub) | UTM / short links |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | форма → CRM → nurture |
-| [twentyhq/twenty](https://github.com/twentyhq/twenty) | lightweight CRM |
-| [listmonk/listmonk](https://github.com/listmonk/listmonk) | email после КП |
-| [gitroomhq/postiz-app](https://github.com/gitroomhq/postiz-app) | планировщик соцсетей |
+| Слой | Решение | Почему |
+|------|---------|--------|
+| Хостинг | Cloudflare Pages + `sys822.ru` | уже задеплоено |
+| Атрибуция | UTM → Telegram | без self-host |
+| Контент | TG / LinkedIn / VC / Habr | органика РФ |
+| Outreach | CSV ICP + шаблоны A/B | SQL, не спам |
+| Аналитика | Cloudflare Web Analytics | 1 клик, без Umami пока |
+
+**Отложено:** Umami, Dub, n8n, Twenty, Listmonk, Postiz — после 5+ SQL.
+
+Промпт агента: **`AGENT_PROMPT.md`**. Запуск дня: **`LAUNCH_DAY.md`**. DNS: **`DNS_FIX.md`**.
 
 ## KPI 30 дней
 

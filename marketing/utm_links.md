@@ -5,6 +5,7 @@
 | Канал | URL |
 |-------|-----|
 | Telegram organic launch | https://sys822.ru/?utm_source=telegram&utm_medium=organic&utm_campaign=sys822_launch&utm_content=post01 |
+| Telegram post02 (7 вопросов) | https://sys822.ru/?utm_source=telegram&utm_medium=organic&utm_campaign=sys822_launch&utm_content=post02 |
 | Telegram Ads test | https://sys822.ru/?utm_source=telegram&utm_medium=ads&utm_campaign=sys822_ads_v1&utm_content=cta_form |
 | Habr article | https://sys822.ru/?utm_source=habr&utm_medium=article&utm_campaign=b300_deepdive&utm_content=bio |
 | VC.ru | https://sys822.ru/?utm_source=vc&utm_medium=post&utm_campaign=capex_ai&utm_content=article01 |

@@ -1,0 +1,54 @@
+company,segment,role,why_fit,channel,message_variant,status,notes
+КРОК,integrator,Директор по решениям AI/ЦОД,Крупный SI с практикой HPC/AI on-prem и пресейлом enterprise,email,A,todo,Wave1 priority; one-pager + 15-мин инженер
+Softline,integrator,Руководитель направления инфраструктуры ЦОД,VAR/дистрибуция серверов и GPU-кластеров для корпоративных заказчиков,email,A,todo,Wave1 priority; спросить pipeline private AI
+IBS,integrator,Партнёр / практика Digital Platforms,Enterprise-интегратор с AI/ML и инфраструктурными проектами,linkedin,A,todo,LinkedIn warm через практику
+Ланит,integrator,Директор департамента вычислительных систем,Сильный VAR по серверам/СХД; клиенты с запросом on-prem AI,email,A,todo,Материалы для пресейла SYS-822GS
+Инфосистемы Джет,integrator,Руководитель направления ЦОД и облаков,Интегратор ЦОД/безопасности; high-ticket инфраструктура,email,A,todo,Фокус на питание/800G для B300
+АйТеко,integrator,CTO направления инфраструктурных решений,SI с крупными гос/корпоративными внедрениями,email,A,todo,Уточнить интерес к HGX 8-GPU
+Т1 Интеграция,integrator,Руководитель практики AI Infrastructure,Группа Т1 — сильный канал в enterprise и финсектор,linkedin,A,todo,Через практику AI Infra
+Ситроникс,integrator,Директор по продуктам инфраструктуры,Исторический SI/вендор-партнёр по железу,email,A,todo,Проверить актуальный GPU pipeline
+OCS Distribution,integrator,Product Manager серверного оборудования,Дистрибутор — доступ к VAR-сети и пресейлу,email,A,todo,Не end-customer; канал в партнёров
+Marvel Distribution,integrator,Категорийный менеджер HPC/AI,Дистрибуция серверов/компонентов; интерес к HGX SKU,email,A,todo,Партнёрский one-pager
+Merlion,integrator,Менеджер направления серверов Supermicro,Крупный дистрибутор; возможный канал к SYS-822GS,email,A,todo,Уточнить политику вендора/бренда
+YADRO,integrator,Head of AI Systems / Solution Architect,Российский вендор серверов; смежный диалог по AI-платформам и совместимости ЦОД,linkedin,B,todo,Wave1 priority; B как CTO-уровень; не конкурировать в лоб
+Selectel,datacenter,CTO / Head of Product Infrastructure,Крупный оператор ЦОД и облака РФ; GPU/colo/dedicated,linkedin,B,todo,Wave1 priority; слот техразбор питание/800G
+DataLine (Ростелеком ЦОД),datacenter,Директор по развитию продуктов ЦОД,Крупный коммерческий ЦОД; colo под dense GPU,email,B,todo,Вопрос про стойки под 8U HGX B300
+IXcellerate,datacenter,Commercial Director / Head of Sales Engineering,Московский campus ЦОД; клиенты с AI-стойками,linkedin,B,todo,Colo + power density
+Linxdatacenter,datacenter,Solution Architect ЦОД,ЦОД СПб/МСК; enterprise colo,email,B,todo,Уточнить PUE/питание под B300
+Stack Group (M1),datacenter,Руководитель направления AI/HPC colo,Оператор с фокусом на high-density,email,B,todo,Wave1; HaaS/colo под GPU
+Rostelecom Cloud / ЦОД,datacenter,Архитектор инфраструктуры GPU,Федеральный оператор; крупные AI-проекты,linkedin,B,todo,Через облако/ЦОД-юнит
+Key Point,datacenter,Директор по работе с ключевыми клиентами,Сеть ЦОД; потенциал под GPU-стойки,email,B,todo,Регионы + МСК
+3data,datacenter,Head of Product,Оператор ЦОД; интерес к dense compute,linkedin,B,todo,Короткий B-питч
+Cloud.ru (SberCloud),gpu_cloud,Head of GPU Cloud / ML Platform,Крупнейший GPU cloud РФ; HaaS и managed ML,linkedin,B,todo,Wave1 priority; от $1M / КП по запросу
+Yandex Cloud,gpu_cloud,Product Lead Compute / GPU,Публичное облако с GPU-инстансами; возможный private/dedicated,linkedin,B,todo,Не спамить; только warm/реферал если есть
+VK Cloud,gpu_cloud,Руководитель направления ML Infrastructure,GPU cloud для ML-команд; private offerings,email,B,todo,Сравнить с on-prem HGX для клиентов
+Beeline Cloud,gpu_cloud,CTO Cloud Platform,Операторский cloud; GPU/HaaS развитие,linkedin,B,todo,Уточнить roadmap GPU
+MTS Web Services (MWS),gpu_cloud,Head of AI Infrastructure,Облако МТС; AI/GPU сервисы,email,B,todo,Private GPU / dedicated racks
+Selectel GPU Cloud,gpu_cloud,Product Owner GPU,Линейка GPU cloud у Selectel; пересечение с on-prem,linkedin,B,todo,Отдельно от colo-контакта Selectel
+Сбер AI / SberDevices,ai_lab,Head of ML Infrastructure,Крупнейшая AI-lab РФ; потребность в on-prem/private GPU,linkedin,B,todo,Wave1 priority; 2 слота техразбор
+Яндекс (Yandex Research / ML Infra),ai_lab,Head of ML Platform / Infra,Сильная внутренняя ML-infra; периодические закупки кластеров,linkedin,B,todo,Только через известный контакт/ивент; не cold spam
+Т-Банк (T-Bank AI),ai_lab,CTO / Head of AI Platform,Финтех с сильной ML-командой и on-prem контуром,linkedin,B,todo,Compliance-sensitive; акцент private AI
+VK AI / VK Tech,ai_lab,Руководитель ML Infrastructure,ML-infra крупного tech-холдинга,email,B,todo,Спросить горизонт 3–6 мес
+МТС AI,ai_lab,Head of AI Engineering,Корпоративная AI-lab оператора,linkedin,B,todo,Связка с MWS при интересе
+Касперский (Kaspersky Lab),ai_lab,CTO / Head of R&D Infra,On-prem security/AI R&D; чувствительные контуры,email,B,todo,Акцент air-gapped / private
+X5 Tech,ai_lab,Head of Data Platform / ML Ops,Ритейл tech; растущий ML stack,linkedin,B,todo,Budget corridor осторожно
+Авито (Avito Tech),ai_lab,ML Infrastructure Lead,Крупный marketplace tech; GPU training,linkedin,B,todo,Warm preferred
+Wildberries Tech,ai_lab,Head of ML Platform,E-com ML; возможные private GPU,email,B,todo,Горизонт 3–6 мес
+Ozon Tech,ai_lab,Infrastructure / GPU Cluster Lead,E-com tech; кластеры обучения,linkedin,B,todo,B-вариант CTO
+Positive Technologies,ai_lab,Head of R&D Infrastructure,Security vendor; on-prem lab compute,email,B,todo,Private AI narrative
+НПО «РусБИТех» / Астра смежные SI,integrator,Архитектор инфраструктурных решений,Гос/защищённые контуры; интерес к локальным поставкам,email,A,todo,Комплаенс формулировок; без гарантий дилерства
+Beeline Big Data / AI,ai_lab,Директор по AI-платформе,Операторский AI; связка с Beeline Cloud,linkedin,B,todo,Координировать с gpu_cloud контактом
+EdgeЦентр / EdgeCenter,gpu_cloud,Product / Solutions GPU,CDN/edge + compute; GPU HaaS потенциал,email,B,todo,Уточнить наличие GPU line
+Servercore,gpu_cloud,Head of Sales Engineering,IaaS/HaaS СНГ; GPU cloud,linkedin,B,todo,СНГ-охват
+Kazakhtelecom / KT Cloud (СНГ),datacenter,Архитектор ЦОД,Операторский ЦОД Казахстан; colo GPU,email,B,todo,СНГ wave; язык RU
+BeCloud (Беларусь),datacenter,Коммерческий директор ЦОД,Нац. оператор ЦОД BY; enterprise colo,email,B,todo,СНГ; проверить санкционный/логистический контекст
+Группа компаний Softline Digital,integrator,Presales Lead AI Infrastructure,Пресейл AI on-prem для клиентов Softline,email,A,todo,Дубль канала Softline — другой role
+Kraftway,integrator,Директор по корпоративным проектам,Российский производитель/интегратор ПК и серверов,email,A,todo,Смежный диалог по поставкам
+Depo Computers,integrator,Руководитель направления серверов,Локальный бренд серверов; канал в enterprise,email,A,todo,Партнёрский пресейл
+Norbit (Ланит),integrator,Practice Lead Data & AI,AI-практика внутри группы Ланит,linkedin,A,todo,Связка с Ланит compute
+Сколково / Skoltech AI Center,ai_lab,Head of Compute Infrastructure,Академический/прикладной AI-центр; грантовые/инвест кластеры,email,B,todo,Не enterprise $1M всегда; фильтр бюджета
+MTS Big Data,ai_lab,ML Ops / Platform Lead,Внутренняя платформа данных/ML,linkedin,B,todo,Отдельно от MWS
+Сбербанк (блок технологий),ai_lab,Руководитель направления GPU-кластеров,Корпоративный контур Сбера вне публичного cloud,email,B,todo,Отдельно от Cloud.ru; осторожный outreach
+АК «Алроса» / крупные промышленные AI,ai_lab,CIO / Head of Digital,Промышленный AI/vision on-prem (тип цели),linkedin,B,todo,Тип цели; конкретный контакт через SI
+Газпромнефть ЦР / IT,ai_lab,Архитектор ML-платформы,Корпоративный ML on-prem в промышленности,email,B,todo,Через интегратора предпочтительно
+Rostelecom AI,ai_lab,Head of AI Solutions,Операторские AI-решения; связка ЦОД+модель,linkedin,B,todo,Координировать с Rostelecom ЦОД
