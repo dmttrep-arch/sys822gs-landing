@@ -1,18 +1,22 @@
 # SYS-822GS Landing
 
-## Deploy on Render (permanent hosting)
+## Live
 
-1. Open: https://render.com/deploy?repo=https://github.com/dmttrep-arch/sys822gs-landing
-2. Create/login Render account (GitHub)
-3. Set environment variables:
-   - TELEGRAM_BOT_TOKEN = (token from BotFather)
-   - TELEGRAM_CHAT_ID = 669802068
-4. Deploy
+**https://dmttrep-arch.github.io/sys822gs-landing/**
 
-Site URL example: `https://sys822gs-landing.onrender.com`
+Форма заявки отправляет лид в Telegram.
 
-Form `POST /api/lead` sends leads to Telegram.
+Обновить сайт после правок HTML:
+```bat
+powershell -ExecutionPolicy Bypass -File publish_pages.ps1
+```
 
-## Cloudflare Pages alternative
+Репозиторий: https://github.com/dmttrep-arch/sys822gs-landing
 
-See `hosting/README.md`
+## Render (опционально, если нужен серверный API)
+
+https://render.com/deploy?repo=https://github.com/dmttrep-arch/sys822gs-landing
+
+## Локально
+
+`start.bat` → http://127.0.0.1:8765/
