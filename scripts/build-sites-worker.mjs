@@ -17,6 +17,7 @@ const clientAssetsDir = join(root, "dist", "client", "assets", "products");
 await mkdir(clientAssetsDir, { recursive: true });
 await cp(join(root, "assets", "products"), clientAssetsDir, { recursive: true, force: true });
 await cp(join(root, "i18n.js"), join(root, "dist", "client", "i18n.js"), { force: true });
+await cp(join(root, "design-v2.css"), join(root, "dist", "client", "design-v2.css"), { force: true });
 await writeFile(join(serverDir, "index.js"), `const PAGE=${JSON.stringify(page)};
 const MEMORY_PAGE=${JSON.stringify(memoryPage)};
 const CATALOG=${JSON.stringify(catalog)};
