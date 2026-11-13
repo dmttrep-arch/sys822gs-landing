@@ -3,18 +3,21 @@ import { join } from "node:path";
 
 const root = process.cwd();
 const source = await readFile(join(root, "index.html"), "utf8");
+const memorySource = await readFile(join(root, "memory.html"), "utf8");
 const catalogText = await readFile(join(root, "catalog.json"), "utf8");
 const catalog = JSON.parse(catalogText);
 if (!Array.isArray(catalog.products) || catalog.products.length !== 38) {
   throw new Error("Catalog must contain exactly 38 products");
 }
 const page = source.replace(/src="hero\.png"/g,'src="https://cdn.jsdelivr.net/gh/dmttrep-arch/sys822gs-landing@gh-pages/hero.png"');
+const memoryPage = memorySource;
 const serverDir = join(root, "dist", "server");
 await mkdir(serverDir, { recursive: true });
 const clientAssetsDir = join(root, "dist", "client", "assets", "products");
 await mkdir(clientAssetsDir, { recursive: true });
 await cp(join(root, "assets", "products"), clientAssetsDir, { recursive: true, force: true });
 await writeFile(join(serverDir, "index.js"), `const PAGE=${JSON.stringify(page)};
+const MEMORY_PAGE=${JSON.stringify(memoryPage)};
 const CATALOG=${JSON.stringify(catalog)};
 const PRODUCTS=new Map(CATALOG.products.map(p=>[p.id,p]));
 const headers={"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
@@ -40,7 +43,8 @@ export default{async fetch(request,env){
     return json({ok:true,requestId});
   }
   if(request.method!=="GET"&&request.method!=="HEAD")return new Response("Method not allowed",{status:405});
-  return new Response(request.method==="HEAD"?null:PAGE,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=300","content-security-policy":"default-src 'self'; img-src 'self' https://cdn.jsdelivr.net data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'","referrer-policy":"strict-origin-when-cross-origin","x-content-type-options":"nosniff","x-frame-options":"DENY"}});
+  const html=url.pathname==="/memory.html"?MEMORY_PAGE:PAGE;
+  return new Response(request.method==="HEAD"?null:html,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=300","content-security-policy":"default-src 'self'; img-src 'self' https://cdn.jsdelivr.net data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'","referrer-policy":"strict-origin-when-cross-origin","x-content-type-options":"nosniff","x-frame-options":"DENY"}});
 }}`, "utf8");
 await mkdir(join(root, "dist", ".openai"), { recursive: true });
 await writeFile(join(root, "dist", ".openai", "hosting.json"), await readFile(join(root, ".openai", "hosting.json"), "utf8"), "utf8");
