@@ -26,8 +26,26 @@ const headers={"content-type":"application/json; charset=utf-8","cache-control":
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers});
 const clean=(value,max)=>String(value||"").trim().slice(0,max);
 const money=(n,decimals)=>n==null?"По запросу":new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:decimals??(Number.isInteger(n)?0:2),maximumFractionDigits:2}).format(n);
+const hex=buffer=>[...new Uint8Array(buffer)].map(byte=>byte.toString(16).padStart(2,"0")).join("");
+const digest=async value=>hex(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value)));
+const hmac=async(secret,value)=>{const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);return hex(await crypto.subtle.sign("HMAC",key,new TextEncoder().encode(value)))};
+const same=(left,right)=>{if(typeof left!=="string"||typeof right!=="string"||left.length!==right.length)return false;let diff=0;for(let i=0;i<left.length;i++)diff|=left.charCodeAt(i)^right.charCodeAt(i);return diff===0};
+const cookie=(request,name)=>{const match=(request.headers.get("cookie")||"").match(new RegExp("(?:^|;\\s*)"+name+"=([^;]+)"));return match?match[1]:""};
+const adminSession=env=>hmac(env.ADMIN_SESSION_SECRET||"","milonchka-price-admin-v1");
 export default{async fetch(request,env){
   const url=new URL(request.url);
+  if(url.pathname==="/api/admin/status"){
+    if(request.method!=="GET")return json({ok:false,error:"method_not_allowed"},405);
+    if(!env.ADMIN_PASSWORD_SHA256||!env.ADMIN_SESSION_SECRET)return json({ok:true,authenticated:false});
+    const expected=await adminSession(env);return json({ok:true,authenticated:same(cookie(request,"milonchka_admin"),expected)});
+  }
+  if(url.pathname==="/api/admin/login"){
+    if(request.method!=="POST")return json({ok:false,error:"method_not_allowed"},405);
+    if(!env.ADMIN_PASSWORD_SHA256||!env.ADMIN_SESSION_SECRET)return json({ok:false,error:"service_not_configured"},503);
+    let data;try{data=await request.json()}catch{return json({ok:false,error:"invalid_json"},400)}
+    const password=clean(data?.password,200);if(password.length<12||!same(await digest(password),env.ADMIN_PASSWORD_SHA256))return json({ok:false,error:"invalid_credentials"},403);
+    const token=await adminSession(env);return new Response(JSON.stringify({ok:true}),{status:200,headers:{...headers,"set-cookie":"milonchka_admin="+token+"; Path=/; Max-Age=1800; HttpOnly; Secure; SameSite=Strict"}});
+  }
   if(url.pathname==="/catalog.json"&&request.method==="GET")return new Response(JSON.stringify(CATALOG),{headers:{"content-type":"application/json; charset=utf-8","cache-control":"public, max-age=300"}});
   if(url.pathname==="/api/lead"){
     if(request.method!=="POST")return json({ok:false,error:"method_not_allowed"},405);
