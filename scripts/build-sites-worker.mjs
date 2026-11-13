@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const root = process.cwd();
@@ -11,6 +11,9 @@ if (!Array.isArray(catalog.products) || catalog.products.length !== 39) {
 const page = source.replace(/src="hero\.png"/g,'src="https://cdn.jsdelivr.net/gh/dmttrep-arch/sys822gs-landing@gh-pages/hero.png"');
 const serverDir = join(root, "dist", "server");
 await mkdir(serverDir, { recursive: true });
+const clientAssetsDir = join(root, "dist", "client", "assets", "products");
+await mkdir(clientAssetsDir, { recursive: true });
+await cp(join(root, "assets", "products"), clientAssetsDir, { recursive: true, force: true });
 await writeFile(join(serverDir, "index.js"), `const PAGE=${JSON.stringify(page)};
 const CATALOG=${JSON.stringify(catalog)};
 const PRODUCTS=new Map(CATALOG.products.map(p=>[p.id,p]));
