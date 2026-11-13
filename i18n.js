@@ -72,6 +72,7 @@
     if ((m = value.match(/^Запрос КП\s*·\s*(\d+)$/))) return lang === 'zh' ? `询价单 · ${m[1]}` : `Request quote · ${m[1]}`;
     if ((m = value.match(/^Объём:\s*(.+)$/))) return `${dict['Объём']}: ${m[1]}`;
     if ((m = value.match(/^Скорость:\s*(.+)$/))) return `${dict['Скорость']}: ${m[1]}`;
+    if ((m = value.match(/^(Объём|Скорость|Тип)\s*·$/))) return `${dict[m[1]]} ·`;
     if ((m = value.match(/^Количество\s+(.+)$/))) return `${dict['Количество']} ${m[1]}`;
     if ((m = value.match(/^(Samsung|SK hynix|Micron) DDR5 ECC RDIMM (\d+) ГБ, (\d+) МТ\/с для совместимых корпоративных серверов; точная совместимость проверяется по спецификации платформы\.$/))) return lang === 'zh' ? `${m[1]} DDR5 ECC RDIMM，${m[2]} GB，${m[3]} MT/s，适用于兼容的企业服务器；具体兼容性以服务器规格为准。` : `${m[1]} DDR5 ECC RDIMM, ${m[2]} GB, ${m[3]} MT/s for compatible enterprise servers; verify compatibility against the server specification.`;
     if (/^\d+(?:[.,]\d+)? ГБ$/.test(value)) return value.replace('ГБ', 'GB').replace(',', '.');
