@@ -8,3 +8,5 @@ setup_err.txt
 tunnel.log
 tunnel.err.log
 PUBLIC_URL.txt
+dist/
+deploy/
