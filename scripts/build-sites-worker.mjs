@@ -5,8 +5,8 @@ const root = process.cwd();
 const source = await readFile(join(root, "index.html"), "utf8");
 const catalogText = await readFile(join(root, "catalog.json"), "utf8");
 const catalog = JSON.parse(catalogText);
-if (!Array.isArray(catalog.products) || catalog.products.length !== 39) {
-  throw new Error("Catalog must contain exactly 39 products");
+if (!Array.isArray(catalog.products) || catalog.products.length !== 38) {
+  throw new Error("Catalog must contain exactly 38 products");
 }
 const page = source.replace(/src="hero\.png"/g,'src="https://cdn.jsdelivr.net/gh/dmttrep-arch/sys822gs-landing@gh-pages/hero.png"');
 const serverDir = join(root, "dist", "server");
