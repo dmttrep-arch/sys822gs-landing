@@ -17,7 +17,7 @@ const PRODUCTS=new Map(CATALOG.products.map(p=>[p.id,p]));
 const headers={"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers});
 const clean=(value,max)=>String(value||"").trim().slice(0,max);
-const money=n=>n==null?"По запросу":new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:Number.isInteger(n)?0:2,maximumFractionDigits:2}).format(n);
+const money=(n,decimals)=>n==null?"По запросу":new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:decimals??(Number.isInteger(n)?0:2),maximumFractionDigits:2}).format(n);
 export default{async fetch(request,env){
   const url=new URL(request.url);
   if(url.pathname==="/catalog.json"&&request.method==="GET")return new Response(JSON.stringify(CATALOG),{headers:{"content-type":"application/json; charset=utf-8","cache-control":"public, max-age=300"}});
@@ -30,7 +30,7 @@ export default{async fetch(request,env){
     const items=[];for(const row of data.items){const product=PRODUCTS.get(String(row?.productId||""));const quantity=Number(row?.quantity);if(!product||!Number.isInteger(quantity)||quantity<1||quantity>999)return json({ok:false,error:"invalid_item"},400);items.push({product,quantity})}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return json({ok:false,error:"service_not_configured"},503);
     const requestId="MIL-"+Date.now().toString(36).toUpperCase();
-    const lines=items.map(({product,quantity},i)=>(i+1)+". "+product.title+"\\n   Количество: "+quantity+"\\n   Цена: "+money(product.priceUsd));
+    const lines=items.map(({product,quantity},i)=>(i+1)+". "+product.title+"\\n   Количество: "+quantity+"\\n   Цена: "+money(product.priceUsd,product.priceDecimals));
     const text=["Новая заявка · HK MILONCHKA LIMITED","Номер: "+requestId,"","Имя: "+name,"Компания: "+company,"Контакт: "+contact,"Email: "+(email||"—"),"Комментарий: "+(message||"—"),"","Оборудование:",...lines,"","Цены — ориентиры в USD. Комплектация и условия требуют подтверждения."].join("\\n");
     let response;try{response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)})}catch{return json({ok:false,error:"delivery_failed"},502)}
     if(!response.ok)return json({ok:false,error:"delivery_failed"},502);
